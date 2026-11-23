@@ -1,0 +1,134 @@
+{
+ "actions": [],
+ "autoname": "field:user",
+ "creation": "2026-11-22 19:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "calibration_completed",
+  "preferred_modality",
+  "section_switches",
+  "focus_mode",
+  "bionic_reading",
+  "dyslexia_font",
+  "column_break_switches",
+  "reading_ruler",
+  "reduced_motion",
+  "tldr_first"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "calibration_completed",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Calibration Completed"
+  },
+  {
+   "default": "Balanced",
+   "fieldname": "preferred_modality",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Preferred Modality",
+   "options": "Balanced\nVideo_First\nText_First\nAudio_Only"
+  },
+  {
+   "fieldname": "section_switches",
+   "fieldtype": "Section Break",
+   "label": "Cognitive & Reading Accessibility"
+  },
+  {
+   "default": "0",
+   "fieldname": "focus_mode",
+   "fieldtype": "Check",
+   "label": "Focus Mode"
+  },
+  {
+   "default": "0",
+   "fieldname": "bionic_reading",
+   "fieldtype": "Check",
+   "label": "Bionic Reading"
+  },
+  {
+   "default": "0",
+   "fieldname": "dyslexia_font",
+   "fieldtype": "Check",
+   "label": "Dyslexia Font & Sepia"
+  },
+  {
+   "fieldname": "column_break_switches",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "reading_ruler",
+   "fieldtype": "Check",
+   "label": "Reading Ruler"
+  },
+  {
+   "default": "0",
+   "fieldname": "reduced_motion",
+   "fieldtype": "Check",
+   "label": "Reduced Motion"
+  },
+  {
+   "default": "1",
+   "fieldname": "tldr_first",
+   "fieldtype": "Check",
+   "label": "TL;DR First"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-22 19:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "LMS Neuro A11y",
+ "name": "LMS Accessibility Profile",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "LMS Student",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Course Creator",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "role": "Moderator",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

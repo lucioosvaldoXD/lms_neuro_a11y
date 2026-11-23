@@ -1,0 +1,13 @@
+[
+  {
+    "doctype": "Custom Field",
+    "name": "Course Lesson-tldr_summary",
+    "dt": "Course Lesson",
+    "fieldname": "tldr_summary",
+    "fieldtype": "Small Text",
+    "label": "Resumen Ejecutivo (TL;DR)",
+    "description": "Resumen ejecutivo de 3 viñetas (Markdown) mostrado al inicio de la lección en modo TL;DR / Enfoque.",
+    "insert_after": "title",
+    "module": "LMS Neuro A11y"
+  }
+]
