@@ -5,71 +5,83 @@
 const STEPS = [
 	{
 		key: 'visual_density',
-		title: '1/4 · Densidad Visual',
-		subtitle: '¿Cómo prefieres ver el espacio de estudio?',
+		badge: 'Paso 1 de 4 · Densidad Visual',
+		title: '¿Cómo prefieres tu espacio de estudio?',
+		subtitle: 'Puedes cambiarlo en cualquier momento desde Ajustes de Lectura.',
 		options: [
 			{
 				value: 'standard',
-				label: 'Pantalla completa con menús',
-				desc: 'Navegación lateral visible y vista estándar del curso.',
+				icon: '◫',
+				label: 'Vista completa con menús',
+				desc: 'Navegación lateral siempre visible y estructura clásica del curso.',
 			},
 			{
 				value: 'tunnel',
+				icon: '◎',
 				label: 'Modo Túnel sin distracciones',
-				desc: 'Oculta barras laterales y activa temporizador Pomodoro.',
+				desc: 'Oculta barras laterales y activa un temporizador Pomodoro integrado.',
 			},
 		],
 	},
 	{
 		key: 'text_processing',
-		title: '2/4 · Procesamiento de Texto',
-		subtitle: 'Elige la tipografía y contraste más cómodo para tus ojos:',
+		badge: 'Paso 2 de 4 · Procesamiento de Texto',
+		title: 'Elige la lectura más cómoda para tu vista',
+		subtitle: 'Compara el estilo estándar frente a tipografía de alta legibilidad.',
 		options: [
 			{
 				value: 'standard',
-				label: 'Fuente estándar limpia',
-				desc: 'Tipografía nativa del sistema sobre fondo neutro.',
+				icon: 'Aa',
+				label: 'Tipografía estándar limpia',
+				desc: 'Fuente nativa del sistema con contraste neutro habitual.',
 				previewClass: '',
 			},
 			{
 				value: 'dyslexia_sepia',
-				label: 'Atkinson Hyperlegible + Sepia suave',
-				desc: 'Interlineado amplio (1.8) y fondo crema #FAF8F5 de baja fatiga.',
+				icon: 'Aa',
+				label: 'Atkinson Hyperlegible + Sepia',
+				desc: 'Interlineado 1.8 y papel crema suave #FAF8F5 de baja fatiga visual.',
 				previewClass: 'sepia-preview',
 			},
 		],
 	},
 	{
 		key: 'info_consumption',
-		title: '3/4 · Consumo de Información',
-		subtitle: '¿Qué formato te ayuda a retener mejor las lecciones?',
+		badge: 'Paso 3 de 4 · Consumo de Información',
+		title: '¿Qué formato te ayuda a retener mejor?',
+		subtitle: 'Priorizaremos los bloques de contenido según tu preferencia.',
 		options: [
 			{
 				value: 'video_transcript',
-				label: 'Video con transcripción',
-				desc: 'Prioriza contenido audiovisual acompañado de guía escrita.',
+				icon: '▶',
+				label: 'Video con guía escrita',
+				desc: 'Contenido audiovisual acompañado de notas y transcripción.',
 			},
 			{
 				value: 'text_structured',
-				label: 'Texto estructurado paso a paso',
-				desc: 'Resumen ejecutivo (TL;DR) arriba y bloques claros.',
+				icon: '☰',
+				label: 'Texto estructurado + TL;DR',
+				desc: 'Resumen ejecutivo de 3 puntos al inicio y lectura paso a paso.',
 			},
 		],
 	},
 	{
 		key: 'sensory_control',
-		title: '4/4 · Control Sensorial',
-		subtitle: 'Define cómo debe comportarse el movimiento y multimedia:',
+		badge: 'Paso 4 de 4 · Control Sensorial',
+		title: 'Define el comportamiento multimedia',
+		subtitle: 'Controla transiciones visuales y reproducción de audio o video.',
 		options: [
 			{
 				value: 'standard',
+				icon: '✦',
 				label: 'Estándar dinámico',
-				desc: 'Transiciones normales y reproducción habitual.',
+				desc: 'Transiciones suaves y comportamiento multimedia habitual.',
 			},
 			{
 				value: 'manual_reduced',
+				icon: '⏸',
 				label: 'Control manual total',
-				desc: 'Sin animaciones CSS ni reproducción automática (autoplay).',
+				desc: 'Cero animaciones CSS y sin reproducción automática (autoplay).',
 			},
 		],
 	},
@@ -94,25 +106,41 @@ export function showCalibrationModal(onComplete) {
 
 	function renderStep() {
 		const step = STEPS[currentStep];
+		const progressPct = ((currentStep + 1) / STEPS.length) * 100;
+
 		modal.innerHTML = `
-			<div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
-				<div style="display:flex;align-items:center;gap:0.6rem;">
-					<img src="/assets/lms_neuro_a11y/images/logisentinel-icon-transparent.png" alt="LogiSentinel" style="width:28px;height:28px;" />
-					<span style="font-size:0.85rem;color:#94A3B8;font-weight:600;">LogiSentinel Academy · Calibración rápida</span>
+			<div class="ls-cal-header">
+				<div class="ls-cal-brand">
+					<img src="/assets/lms_neuro_a11y/images/logisentinel-icon-transparent.png" alt="LogiSentinel" />
+					<div>
+						<div class="ls-cal-brand-name">LogiSentinel Academy</div>
+						<div class="ls-cal-brand-sub">Calibración rápida · 45 seg</div>
+					</div>
 				</div>
-				<button type="button" id="ls-cal-skip" style="background:transparent;border:none;color:#94A3B8;cursor:pointer;font-size:0.85rem;text-decoration:underline;">
+				<button type="button" id="ls-cal-skip" class="ls-cal-skip">
 					Saltar y usar estándar
 				</button>
 			</div>
-			<h2 style="margin:1rem 0 0.25rem;font-size:1.25rem;font-weight:700;">${step.title}</h2>
-			<p style="margin:0;color:#CBD5E1;font-size:0.95rem;">${step.subtitle}</p>
+
+			<div class="ls-cal-progress-track" aria-hidden="true">
+				<div class="ls-cal-progress-fill" style="width:${progressPct}%"></div>
+			</div>
+
+			<div class="ls-cal-step-badge">${step.badge}</div>
+			<h2 class="ls-cal-title">${step.title}</h2>
+			<p class="ls-cal-subtitle">${step.subtitle}</p>
+
 			<div class="ls-cal-options">
 				${step.options
 					.map(
 						(opt) => `
 					<button type="button" class="ls-cal-card ${opt.previewClass || ''}" data-value="${opt.value}">
-						<div style="font-weight:700;margin-bottom:0.35rem;">${opt.label}</div>
-						<div style="font-size:0.85rem;opacity:0.85;">${opt.desc}</div>
+						<div class="ls-cal-card-top">
+							<span class="ls-cal-card-icon">${opt.icon}</span>
+							<span class="ls-cal-card-arrow">→</span>
+						</div>
+						<div class="ls-cal-card-title">${opt.label}</div>
+						<div class="ls-cal-card-desc">${opt.desc}</div>
 					</button>`
 					)
 					.join('')}

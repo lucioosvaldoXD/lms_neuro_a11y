@@ -175,18 +175,6 @@ function applyLogiSentinelBranding() {
 	} else if (!document.title || document.title === 'Learning') {
 		document.title = 'LogiSentinel Academy';
 	}
-
-	const header = document.querySelector('header, nav');
-	if (header && !document.getElementById('ls-brand-pill')) {
-		const pill = document.createElement('a');
-		pill.id = 'ls-brand-pill';
-		pill.href = '/lms';
-		pill.innerHTML = `
-			<img src="/assets/lms_neuro_a11y/images/logisentinel-icon-transparent.png" alt="LogiSentinel" />
-			<span>LogiSentinel Academy</span>
-		`;
-		header.insertBefore(pill, header.firstChild);
-	}
 }
 
 function observeLessonDom() {
