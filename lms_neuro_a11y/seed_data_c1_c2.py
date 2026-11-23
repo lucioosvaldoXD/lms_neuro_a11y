@@ -2,7 +2,7 @@
 
 COURSES_1_AND_2 = [
 	{
-		"title": "Curso 1: Traducción Técnico -> Negocio (El Arte del 'So What?')",
+		"title": "Curso 1: Traducción Técnico → Negocio (El Arte del 'So What?')",
 		"short_introduction": "Aprende a transformar hallazgos de ciberseguridad y arquitectura técnica en impacto operativo, financiero y legal que un CEO o CFO aprueba.",
 		"description": "<p>Domina la traducción de riesgos técnicos a decisiones de negocio mediante la Regla de las 3 Capas, el diccionario ejecutivo y la estructura BLUF.</p>",
 		"chapters": [
@@ -26,7 +26,7 @@ Un **CEO, CFO o Director de Operaciones** evalúa el mundo en tres variables: **
 Graba una nota de voz de **45 segundos** explicando tu servicio principal de ciberseguridad **sin usar ninguna sigla en inglés**. Escúchala y verifica si un gerente de logística o finanzas entendería exactamente qué riesgo le quitas de encima.""",
 					},
 					{
-						"title": "Lección 2: La Regla de las 3 Capas (Hallazgo -> Interrupción -> Impacto)",
+						"title": "Lección 2: La Regla de las 3 Capas (Hallazgo → Interrupción → Impacto)",
 						"tldr_summary": "- Nunca entregues un hallazgo técnico aislado; conéctalo siempre con operación y dinero.\n- Capa 1 (Qué falla) -> Capa 2 (Qué se detiene) -> Capa 3 (Cuánto cuesta en dinero o ley).\n- Esta secuencia convierte reportes ignorados en presupuestos aprobados en una sola reunión.",
 						"body": """### Concepto Clave (Ciberseguridad B2B)
 Todo argumento técnico ante dirección debe cruzar **tres capas obligatorias**:
@@ -45,7 +45,7 @@ Todo argumento técnico ante dirección debe cruzar **tres capas obligatorias**:
 Toma el último hallazgo técnico que hayas reportado a un cliente o jefe y escríbelo en **3 líneas exactas**, una por cada capa. Si en la Capa 3 no hay dinero, tiempo o riesgo legal, reescríbela.""",
 					},
 					{
-						"title": "Lección 3: Diccionario de Traducción (15 siglas -> Flujo de Efectivo)",
+						"title": "Lección 3: Diccionario de Traducción (15 siglas → Flujo de Efectivo)",
 						"tldr_summary": "- Las siglas técnicas generan distancia cognitiva y sensación de riesgo oculto en dirección.\n- Reemplaza términos como WAF, XDR, SIEM, DMARC y Ransomware por consecuencias de negocio.\n- Quien domina el lenguaje del cliente controla la velocidad de la decisión.",
 						"body": """### Concepto Clave (Ciberseguridad B2B)
 Cuando un directivo no entiende una sigla, rara vez pregunta; simplemente **pospone la decisión**. Traducir las 15 siglas más comunes elimina esa fricción.

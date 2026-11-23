@@ -28,7 +28,7 @@ Cuando un directivo objeta, normalmente protege una de tres cosas: **su presupue
 Anota las **3 objeciones que más te frenan** hoy y escribe al lado cuál de los tres miedos reales (dinero, riesgo de cambio o ego interno) está detrás.""",
 					},
 					{
-						"title": "Lección 2: El Método L.A.R.C. (Escuchar -> Aceptar -> Reencuadrar -> Confirmar)",
+						"title": "Lección 2: El Método L.A.R.C. (Escuchar → Aceptar → Reencuadrar → Confirmar)",
 						"tldr_summary": "- L.A.R.C. evita que discutas con el cliente y mantiene el control de la conversación.\n- Escucha completo -> Acepta sin ceder -> Reencuadra al impacto -> Confirma si quedó resuelto.\n- Quien pregunta tras reencuadrar recupera el liderazgo de la junta.",
 						"body": """### Concepto Clave (Ciberseguridad B2B)
 El método **L.A.R.C.** (*Listen, Acknowledge, Reframe, Confirm*) estructura cualquier manejo de objeciones en 4 pasos limpios:
