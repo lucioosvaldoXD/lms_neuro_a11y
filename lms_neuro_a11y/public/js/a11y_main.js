@@ -3,6 +3,7 @@
  * Synchronizes localStorage (FOUC-free) with Frappe RPC API and DOM engines.
  */
 
+import { applyBeelineReading, revertBeelineReading } from './a11y_beeline.js';
 import { applyBionicReading, revertBionicReading } from './a11y_bionic.js';
 import { showCalibrationModal } from './a11y_calibration_modal.js';
 import { mountA11yDrawer } from './a11y_drawer.js';
@@ -15,6 +16,7 @@ const DEFAULT_PROFILE = {
 	calibration_completed: 0,
 	focus_mode: 0,
 	bionic_reading: 0,
+	beeline_reading: 0,
 	dyslexia_font: 0,
 	reading_ruler: 0,
 	reduced_motion: 0,
@@ -48,6 +50,7 @@ function applyAttributes(profile) {
 	const map = {
 		focus_mode: 'data-a11y-focus',
 		bionic_reading: 'data-a11y-bionic',
+		beeline_reading: 'data-a11y-beeline',
 		dyslexia_font: 'data-a11y-dyslexia',
 		reading_ruler: 'data-a11y-ruler',
 		reduced_motion: 'data-a11y-motion',
@@ -75,6 +78,12 @@ function applyAttributes(profile) {
 		applyBionicReading();
 	} else {
 		revertBionicReading();
+	}
+
+	if (profile.beeline_reading) {
+		applyBeelineReading();
+	} else {
+		revertBeelineReading();
 	}
 
 	renderFocusWidgets(profile, detectLessonIdentifier(), fetchLessonTldr);
@@ -161,6 +170,8 @@ async function handleCalibrationComplete(answers) {
 	if (!answers.skipped) {
 		fallback.focus_mode = answers.visual_density === 'tunnel' ? 1 : 0;
 		fallback.dyslexia_font = answers.text_processing === 'dyslexia_sepia' ? 1 : 0;
+		fallback.bionic_reading = answers.text_processing === 'bionic_beeline' ? 1 : 0;
+		fallback.beeline_reading = answers.text_processing === 'bionic_beeline' ? 1 : 0;
 		fallback.reduced_motion = answers.sensory_control === 'manual_reduced' ? 1 : 0;
 		fallback.preferred_modality =
 			answers.info_consumption === 'text_structured' ? 'Text_First' : 'Video_First';
@@ -183,6 +194,7 @@ function observeLessonDom() {
 		observerTimer = setTimeout(() => {
 			applyLogiSentinelBranding();
 			if (currentProfile.bionic_reading) applyBionicReading();
+			if (currentProfile.beeline_reading) applyBeelineReading();
 			renderFocusWidgets(currentProfile, detectLessonIdentifier(), fetchLessonTldr);
 		}, 120);
 	});
@@ -198,6 +210,12 @@ async function init() {
 		() => showCalibrationModal(handleCalibrationComplete)
 	);
 	observeLessonDom();
+	window.addEventListener('resize', () => {
+		clearTimeout(observerTimer);
+		observerTimer = setTimeout(() => {
+			if (currentProfile.beeline_reading) applyBeelineReading();
+		}, 150);
+	});
 
 	const isLmsRoute = window.location.pathname.includes('/lms');
 

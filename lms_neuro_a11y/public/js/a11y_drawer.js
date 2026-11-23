@@ -14,6 +14,11 @@ const SWITCHES = [
 		desc: 'Resalta sílabas iniciales para lectura ágil.',
 	},
 	{
+		key: 'beeline_reading',
+		label: 'Lectura BeeLine (Degradado)',
+		desc: 'Degradado suave por renglón para no saltar líneas.',
+	},
+	{
 		key: 'dyslexia_font',
 		label: 'Tipografía Dislexia + Sepia',
 		desc: 'Atkinson Hyperlegible, interlineado 1.8 y #FAF8F5.',

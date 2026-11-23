@@ -28,6 +28,9 @@ class TestLMSAccessibilityProfile(FrappeTestCase):
 		updated = update_a11y_setting("bionic_reading", 1)
 		self.assertEqual(updated["bionic_reading"], 1)
 
+		updated = update_a11y_setting("beeline_reading", 1)
+		self.assertEqual(updated["beeline_reading"], 1)
+
 		updated = update_a11y_setting("preferred_modality", "Text_First")
 		self.assertEqual(updated["preferred_modality"], "Text_First")
 

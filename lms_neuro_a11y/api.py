@@ -14,6 +14,7 @@ BOOLEAN_FIELDS = {
 	"calibration_completed",
 	"focus_mode",
 	"bionic_reading",
+	"beeline_reading",
 	"dyslexia_font",
 	"reading_ruler",
 	"reduced_motion",
@@ -26,6 +27,7 @@ DEFAULT_PROFILE = {
 	"calibration_completed": 0,
 	"focus_mode": 0,
 	"bionic_reading": 0,
+	"beeline_reading": 0,
 	"dyslexia_font": 0,
 	"reading_ruler": 0,
 	"reduced_motion": 0,
@@ -41,6 +43,7 @@ def _serialize_profile(doc) -> dict:
 		"calibration_completed": int(doc.calibration_completed or 0),
 		"focus_mode": int(doc.focus_mode or 0),
 		"bionic_reading": int(doc.bionic_reading or 0),
+		"beeline_reading": int(doc.beeline_reading or 0),
 		"dyslexia_font": int(doc.dyslexia_font or 0),
 		"reading_ruler": int(doc.reading_ruler or 0),
 		"reduced_motion": int(doc.reduced_motion or 0),
@@ -156,7 +159,8 @@ def save_calibration_results(answers_dict) -> dict:
 
 		doc.focus_mode = 1 if visual_density == "tunnel" else 0
 		doc.dyslexia_font = 1 if text_processing == "dyslexia_sepia" else 0
-		doc.bionic_reading = 1 if text_processing == "bionic" else 0
+		doc.bionic_reading = 1 if text_processing in ("bionic", "bionic_beeline") else 0
+		doc.beeline_reading = 1 if text_processing in ("beeline", "bionic_beeline") else 0
 		doc.reduced_motion = 1 if sensory_control == "manual_reduced" else 0
 		doc.tldr_first = 1
 

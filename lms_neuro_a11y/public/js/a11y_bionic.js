@@ -72,8 +72,11 @@ export function applyBionicReading(rootSelector = '.ProseMirror, .lms-lesson-con
 				const bold = document.createElement('strong');
 				bold.className = 'ls-bionic-fixation';
 				bold.textContent = part.slice(0, fixLen);
-				wrapper.appendChild(bold);
-				wrapper.appendChild(document.createTextNode(part.slice(fixLen)));
+				const wordSpan = document.createElement('span');
+				wordSpan.className = 'ls-word';
+				wordSpan.appendChild(bold);
+				wordSpan.appendChild(document.createTextNode(part.slice(fixLen)));
+				wrapper.appendChild(wordSpan);
 			});
 
 			if (textNode.parentNode) {

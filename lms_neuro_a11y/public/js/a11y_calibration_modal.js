@@ -43,6 +43,13 @@ const STEPS = [
 				desc: 'Interlineado 1.8 y papel crema suave #FAF8F5 de baja fatiga visual.',
 				previewClass: 'sepia-preview',
 			},
+			{
+				value: 'bionic_beeline',
+				icon: '⚡',
+				label: 'Bionic + BeeLine Reader',
+				desc: 'Negritas guía en sílabas iniciales + degradado de color por línea.',
+				previewClass: '',
+			},
 		],
 	},
 	{

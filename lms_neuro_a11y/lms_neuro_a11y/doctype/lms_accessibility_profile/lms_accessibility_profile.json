@@ -11,6 +11,7 @@
   "section_switches",
   "focus_mode",
   "bionic_reading",
+  "beeline_reading",
   "dyslexia_font",
   "column_break_switches",
   "reading_ruler",
@@ -58,6 +59,12 @@
    "fieldname": "bionic_reading",
    "fieldtype": "Check",
    "label": "Bionic Reading"
+  },
+  {
+   "default": "0",
+   "fieldname": "beeline_reading",
+   "fieldtype": "Check",
+   "label": "BeeLine Reading"
   },
   {
    "default": "0",

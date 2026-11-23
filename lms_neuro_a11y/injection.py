@@ -17,6 +17,7 @@ BOOTSTRAP_HEAD_SNIPPET = """<!-- lms_neuro_a11y: FOUC-free bootstrap & LogiSenti
     var map = {
       focus_mode: 'data-a11y-focus',
       bionic_reading: 'data-a11y-bionic',
+      beeline_reading: 'data-a11y-beeline',
       dyslexia_font: 'data-a11y-dyslexia',
       reading_ruler: 'data-a11y-ruler',
       reduced_motion: 'data-a11y-motion',
